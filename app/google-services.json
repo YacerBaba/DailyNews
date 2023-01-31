@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "814524973969",
+    "project_id": "newsapp-ef538",
+    "storage_bucket": "newsapp-ef538.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814524973969:android:c64430a80a17a8570f9030",
+        "android_client_info": {
+          "package_name": "owner.yacer.mynewsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814524973969-tf9nfn2ghnjt2e4dnk7rbmljg5kqj46k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpxq3oAJ1L4Og_0xnq_1g15yWl5XfeJ30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814524973969-tf9nfn2ghnjt2e4dnk7rbmljg5kqj46k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

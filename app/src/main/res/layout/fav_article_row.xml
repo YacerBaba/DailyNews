@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fav_articleCardView"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/fav_article_img"
+                android:layout_width="95dp"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fav_article_title"
+                android:layout_width="0dp"
+                android:layout_height="94dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/tajawal_medium"
+                android:gravity="center_vertical"
+                android:lineHeight="25dp"
+                android:maxLines="3"
+                android:padding="10dp"
+                android:text="روسيا تقصف أمريكا بالنووي و تحذيرات من تفاقم الأوضاع  "
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fav_article_img"
+                app:layout_constraintStart_toEndOf="@+id/fav_article_date"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/fav_article_date"
+                android:layout_width="75dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:gravity="bottom|center"
+                android:text="قبل 8 ساعات"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fav_btn_delete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/ic_recycle_bin_svgrepo_com"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="@+id/fav_article_date"
+                app:layout_constraintEnd_toStartOf="@+id/fav_article_title"
+                app:layout_constraintStart_toStartOf="@+id/fav_article_date"
+                app:layout_constraintTop_toTopOf="@+id/fav_article_date" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

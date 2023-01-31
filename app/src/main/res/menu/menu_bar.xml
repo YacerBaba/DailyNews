@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <item android:id="@+id/miHome"
+        android:title="الرئيسية"
+        android:icon="@drawable/ic_home_svgrepo"
+        />
+    <item android:id="@+id/miFavorite"
+        android:title="المفضلة"
+        android:icon="@drawable/ic_favorite"
+        />
+    <item android:id="@+id/miAccount"
+        android:title="الحساب"
+        android:icon="@drawable/ic_account"
+        />
+
+
+</menu>
