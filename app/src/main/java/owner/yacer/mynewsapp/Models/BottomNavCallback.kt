@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Models
 
 interface BottomNavCallback {
     fun update()

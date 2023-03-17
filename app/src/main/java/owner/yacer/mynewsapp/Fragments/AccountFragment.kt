@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Fragments
 
 import android.app.Activity
 import android.app.ProgressDialog
@@ -25,6 +25,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import owner.yacer.mynewsapp.*
+import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.Models.Article
+import owner.yacer.mynewsapp.Models.BottomNavCallback
+import owner.yacer.mynewsapp.Adapters.FavoriteNewsAdapter
 import java.util.*
 
 const val REQUEST_CODE = 1

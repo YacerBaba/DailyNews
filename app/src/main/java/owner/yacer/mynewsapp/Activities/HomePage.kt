@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Activities
 
 import android.app.ProgressDialog
 import android.content.Context
@@ -24,7 +24,13 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import okhttp3.Cache
 import okhttp3.OkHttpClient
-import owner.yacer.mynewsapp.FavoriteFragment.Companion.adapter
+import owner.yacer.mynewsapp.Fragments.FavoriteFragment.Companion.adapter
+import owner.yacer.mynewsapp.Fragments.*
+import owner.yacer.mynewsapp.Models.Api
+import owner.yacer.mynewsapp.Models.Article
+import owner.yacer.mynewsapp.Models.BottomNavCallback
+import owner.yacer.mynewsapp.Adapters.FavoriteNewsAdapter
+import owner.yacer.mynewsapp.R
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*

@@ -1,31 +1,27 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Fragments
 
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ProgressBar
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.Source
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.google.protobuf.MapEntryLite
 import kotlinx.android.synthetic.main.activity_home_page.*
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import kotlinx.coroutines.async
-import kotlinx.coroutines.tasks.await
+import owner.yacer.mynewsapp.Models.Article
+import owner.yacer.mynewsapp.Adapters.FavoriteNewsAdapter
+import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.R
 import java.util.*
-import kotlin.collections.HashMap
 
 
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
@@ -63,9 +59,9 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
         db.collection("root").document(user!!.uid).addSnapshotListener { value, _ ->
             if (value?.exists() == true) {
                 var articleList = LinkedList<Article>()
-                var result = value.data as java.util.HashMap<String, Any>
+                var result = value.data //as java.util.HashMap<String, Any>
                 Log.e("msg", result.toString())
-                for (entry: Map.Entry<String, Any> in result.entries) {
+                for (entry: Map.Entry<String, Any> in result!!.entries) {
                     var map = entry.value as java.util.HashMap<String, Any>
                     var article = mapperToArticle(map)
                     articleList.add(article)

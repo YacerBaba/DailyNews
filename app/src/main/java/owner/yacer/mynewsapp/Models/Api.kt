@@ -1,8 +1,7 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Models
 
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Api {

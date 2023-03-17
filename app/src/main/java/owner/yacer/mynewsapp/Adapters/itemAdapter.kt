@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Adapters
 
 import android.content.Intent
 import android.net.Uri
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.ToggleButton
-import androidx.core.content.ContextCompat
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -21,16 +21,16 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import okhttp3.internal.wait
-import java.util.*
+import kotlinx.android.synthetic.main.article_row.view.*
+import owner.yacer.mynewsapp.Models.Item
+import owner.yacer.mynewsapp.R
 
-class HeadLineAdapter :
-    RecyclerView.Adapter<HeadLineAdapter.ViewHolder>() {
+
+class itemAdapter :
+    RecyclerView.Adapter<itemAdapter.ViewHolder>() {
     private val db = Firebase.firestore
     var user = Firebase.auth.currentUser
+
     private val differCallBack = object : DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
             return oldItem.article.publishedAt == newItem.article.publishedAt
@@ -41,28 +41,25 @@ class HeadLineAdapter :
         }
     }
     private val differ = AsyncListDiffer(this, differCallBack)
-    var HeadLinesList: List<Item>
+    var articleList: List<Item>
         get() = differ.currentList
         set(value) {
             differ.submitList(value)
         }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var btnFav = view.findViewById<ToggleButton>(R.id.btn_head_favorite)
-        var headLineTime = view.findViewById<TextView>(R.id.tv_headLineTime)
-        var headLineImg = view.findViewById<ImageView>(R.id.headLine_img)
-        var headLineTitle = view.findViewById<TextView>(R.id.headLine_title)
-
+        val articleCardView = view.findViewById<CardView>(R.id.articleCardView)
+        val articleTitle = view.findViewById<TextView>(R.id.article_title)
+        val articleImage = view.findViewById<ImageView>(R.id.article_img)
+        val articleDate = view.findViewById<TextView>(R.id.article_date)
+        val btnFav = view.btn_fav
         init {
             itemView.setOnClickListener {
-                itemView.setOnClickListener {
-                    val uri = Uri.parse(HeadLinesList[adapterPosition].article.url)
-                    Intent(Intent.ACTION_VIEW, uri).also {
-                        ContextCompat.startActivity(itemView.context, it, null)
-                    }
+                val uri = Uri.parse(articleList[adapterPosition].article.url)
+                Intent(Intent.ACTION_VIEW, uri).also {
+                    startActivity(itemView.context,it,null)
                 }
             }
-
 
         }
 
@@ -70,7 +67,7 @@ class HeadLineAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.headline_row,
+            R.layout.article_row,
             parent,
             false
         )
@@ -79,21 +76,18 @@ class HeadLineAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.apply {
-            Glide.with(this).load(HeadLinesList[position].article.urlToImage).placeholder(R.drawable.ic_img_box_svgrepo_com)
+            Glide.with(this).load(articleList[position].article.urlToImage).placeholder(R.drawable.ic_img_box_svgrepo_com)
                 .priority(Priority.HIGH)
-                .into(holder.headLineImg)
+                .dontAnimate().into(holder.articleImage)
         }
-
-
-        holder.headLineTitle.text = HeadLinesList[position].article.title
-        holder.headLineTime.text = HeadLinesList[position].article.publishedAt
-        holder.btnFav.isChecked = HeadLinesList[position].liked
-
+        holder.articleTitle.text = articleList[position].article.title
+        holder.articleDate.text = articleList[position].article.publishedAt
+        holder.btnFav.isChecked = articleList[position].liked
         holder.btnFav.setOnClickListener {
             if (holder.btnFav.isChecked) {
                 if (user != null) {
-                    HeadLinesList[position].liked = true
-                    val article = HeadLinesList[position].article
+                    articleList[position].liked = true
+                    val article = articleList[position].article
                     val map = mapOf(
                         article.publishedAt to article
                     )
@@ -116,26 +110,28 @@ class HeadLineAdapter :
                     ).show()
                     holder.btnFav.isChecked = false
                 }
-            } else {
-                if (user != null) {
-                    HeadLinesList[position].liked = false
-                    val update = mapOf(HeadLinesList[position].article.publishedAt to FieldValue.delete())
-                    db.collection("root").document(user!!.uid).update(update)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Toast.makeText(
-                                    it.context,
-                                    "تم إزالة الخبر من أخبارك المفضلة",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                Log.e("msgHeadAdapter", task.exception?.message!!)
-                            }
+            }else{
+                if(user!=null){
+                    articleList[position].liked = false
+                    val update = mapOf(articleList[position].article.publishedAt to FieldValue.delete())
+                    db.collection("root").document(user!!.uid).update(update).addOnCompleteListener {task->
+                        if(task.isSuccessful){
+                            Toast.makeText(
+                                it.context,
+                                "تم إزالة الخبر من أخبارك المفضلة",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }else{
+                            Log.e("msgHeadAdapter",task.exception?.message!!)
                         }
+                    }
+
                 }
             }
         }
-    }
 
-    override fun getItemCount(): Int = differ.currentList.size
-}
+        }
+        override fun getItemCount(): Int {
+            return differ.currentList.size
+        }
+    }

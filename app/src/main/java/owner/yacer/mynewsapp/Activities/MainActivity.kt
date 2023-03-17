@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Activities
 
 import android.app.Dialog
 import android.content.Context
@@ -12,6 +12,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import owner.yacer.mynewsapp.R
 
 
 class MainActivity : AppCompatActivity() {

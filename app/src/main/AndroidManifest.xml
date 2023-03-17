@@ -17,17 +17,17 @@
         android:theme="@style/Theme.MyNewsApp"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activities.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".Activities.SettingActivity"
             android:exported="false"
-            android:parentActivityName=".HomePage" />
+            android:parentActivityName=".Activities.HomePage" />
         <activity
-            android:name=".HomePage"
+            android:name=".Activities.HomePage"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

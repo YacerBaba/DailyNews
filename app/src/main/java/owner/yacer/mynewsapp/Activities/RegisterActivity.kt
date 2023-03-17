@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Activities
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -16,6 +16,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.coroutines.async
 import kotlinx.coroutines.tasks.await
+import owner.yacer.mynewsapp.R
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -106,7 +107,7 @@ class RegisterActivity : AppCompatActivity() {
                         "تم إنشاء الحساب بنجاح",
                         Toast.LENGTH_LONG
                     ).show()
-                    Intent(this@RegisterActivity, HomePage::class.java).also {intent ->
+                    Intent(this@RegisterActivity, HomePage::class.java).also { intent ->
                         startActivity(intent)
                         finish()
                     }

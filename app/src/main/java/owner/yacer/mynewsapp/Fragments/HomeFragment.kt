@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Fragments
 
 import android.app.ProgressDialog
 import android.content.Context
@@ -18,6 +18,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import owner.yacer.mynewsapp.*
+import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.Adapters.FavoriteNewsAdapter
+import owner.yacer.mynewsapp.Adapters.HeadLineAdapter
+import owner.yacer.mynewsapp.Models.Item
+import owner.yacer.mynewsapp.Adapters.itemAdapter
 import java.util.*
 
 const val cacheSize = 5 * 1024 * 1024

@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Adapters
 
 import android.content.Intent
 import android.net.Uri
@@ -16,8 +16,9 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.article_row.view.*
 import kotlinx.android.synthetic.main.fav_article_row.view.*
+import owner.yacer.mynewsapp.Models.Article
+import owner.yacer.mynewsapp.R
 import java.util.*
 
 class FavoriteNewsAdapter : RecyclerView.Adapter<FavoriteNewsAdapter.ViewHolder>() {
@@ -49,7 +50,7 @@ class FavoriteNewsAdapter : RecyclerView.Adapter<FavoriteNewsAdapter.ViewHolder>
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FavoriteNewsAdapter.ViewHolder {
+    ): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.fav_article_row,
             parent,

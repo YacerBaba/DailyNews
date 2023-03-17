@@ -1,4 +1,4 @@
-package owner.yacer.mynewsapp
+package owner.yacer.mynewsapp.Fragments
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -27,6 +27,10 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_signin.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
+import owner.yacer.mynewsapp.Activities.RegisterActivity
+import owner.yacer.mynewsapp.Models.BottomNavCallback
+import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.R
 import java.util.*
 
 
