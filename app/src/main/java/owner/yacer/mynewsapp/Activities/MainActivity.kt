@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 dialog?.setCancelable(false)
                 dialog?.show()
             } else {
-                Intent(this, HomePage::class.java).also {
+                Intent(this, HomeActivity::class.java).also {
                     startActivity(it)
                     finish()
                 }

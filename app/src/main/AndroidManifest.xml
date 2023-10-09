@@ -22,9 +22,9 @@
         <activity
             android:name=".Activities.SettingActivity"
             android:exported="false"
-            android:parentActivityName=".Activities.HomePage" />
+            android:parentActivityName=".Activities.HomeActivity" />
         <activity
-            android:name=".Activities.HomePage"
+            android:name=".Activities.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.MainActivity"

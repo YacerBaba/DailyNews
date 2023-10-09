@@ -36,7 +36,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 
-class HomePage : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     private var auth = Firebase.auth
     var user = auth.currentUser
     var db = Firebase.firestore
@@ -99,9 +99,9 @@ class HomePage : AppCompatActivity() {
         val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
             throwable.printStackTrace()
         }
-        CoroutineScope(Dispatchers.IO + coroutineExceptionHandler).launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             val response =
-                myRetrofitInstance.getNews("aljazeera.net", "YOUR API KEY")
+                myRetrofitInstance.getNews("aljazeera.net", "1f4d893e8d9e4be08eb1b92964905f53")
             var photoUrl = user?.photoUrl
             Log.e("msg", "request end")
             if (response.isSuccessful && response.body() != null) {

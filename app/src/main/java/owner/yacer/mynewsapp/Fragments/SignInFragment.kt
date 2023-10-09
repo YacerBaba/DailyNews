@@ -29,7 +29,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
 import owner.yacer.mynewsapp.Activities.RegisterActivity
 import owner.yacer.mynewsapp.Models.BottomNavCallback
-import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.Activities.HomeActivity
 import owner.yacer.mynewsapp.R
 import java.util.*
 
@@ -95,7 +95,7 @@ class SignInFragment(var callback: BottomNavCallback) : Fragment(R.layout.fragme
             .requestEmail()
             .requestIdToken("814524973969-tf9nfn2ghnjt2e4dnk7rbmljg5kqj46k.apps.googleusercontent.com")
             .build()
-        mGoogleSignInClient = GoogleSignIn.getClient((activity as HomePage).applicationContext, gso)
+        mGoogleSignInClient = GoogleSignIn.getClient((activity as HomeActivity).applicationContext, gso)
     }
 
     private fun signIn() {

@@ -21,12 +21,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.android.synthetic.main.activity_home_page.*
 import kotlinx.android.synthetic.main.fragment_account.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import owner.yacer.mynewsapp.*
-import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.Activities.HomeActivity
 import owner.yacer.mynewsapp.Models.Article
 import owner.yacer.mynewsapp.Models.BottomNavCallback
 import owner.yacer.mynewsapp.Adapters.FavoriteNewsAdapter
@@ -56,13 +53,16 @@ class AccountFragment(val callback: BottomNavCallback) : Fragment(R.layout.fragm
             setMessage("تسجيل الخروج...")
         }
 
-        val drawer = (activity as HomePage).mDrawerLayout
+        val drawer = (activity as HomeActivity).mDrawerLayout
         more_btn_account.setOnClickListener {
             drawer.openDrawer(GravityCompat.START)
         }
 
-        lifecycleScope.async {
-            getUserCredentials()
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO){
+                getUserCredentials()
+
+            }
         }
         iv_pickPhoto.setOnClickListener {
             openGallery()

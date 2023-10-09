@@ -9,17 +9,16 @@ import android.view.View
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import kotlinx.android.synthetic.main.activity_home_page.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import owner.yacer.mynewsapp.*
-import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.Activities.HomeActivity
 import owner.yacer.mynewsapp.Adapters.FavoriteNewsAdapter
 import owner.yacer.mynewsapp.Adapters.HeadLineAdapter
 import owner.yacer.mynewsapp.Models.Item
@@ -36,17 +35,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val progressBox = ProgressDialog(context)
-        val drawer = (activity as HomePage).mDrawerLayout
+        val drawer = (activity as HomeActivity).mDrawerLayout
         with(progressBox) {
             setCancelable(false)
             setMessage("يرجى الإنتظار")
         }
         progressBarHome.isVisible = true
 
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch {
             delay(50)
             var itemsList = LinkedList<Item>()
-            for (article in HomePage.myBigList) {
+            for (article in HomeActivity.myBigList) {
                 var liked = false
                 for (fav_art in FavoriteNewsAdapter.articleFavList) {
                     if (fav_art.publishedAt == article.publishedAt) {

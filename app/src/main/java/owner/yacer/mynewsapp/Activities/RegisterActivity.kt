@@ -107,7 +107,7 @@ class RegisterActivity : AppCompatActivity() {
                         "تم إنشاء الحساب بنجاح",
                         Toast.LENGTH_LONG
                     ).show()
-                    Intent(this@RegisterActivity, HomePage::class.java).also { intent ->
+                    Intent(this@RegisterActivity, HomeActivity::class.java).also { intent ->
                         startActivity(intent)
                         finish()
                     }

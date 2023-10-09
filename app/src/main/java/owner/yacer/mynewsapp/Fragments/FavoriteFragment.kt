@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_favorite.view.*
 import kotlinx.coroutines.async
 import owner.yacer.mynewsapp.Models.Article
 import owner.yacer.mynewsapp.Adapters.FavoriteNewsAdapter
-import owner.yacer.mynewsapp.Activities.HomePage
+import owner.yacer.mynewsapp.Activities.HomeActivity
 import owner.yacer.mynewsapp.R
 import java.util.*
 
@@ -37,12 +37,12 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
         lifecycleScope.async {
             getFavoriteNews()
         }
-        val drawer = (activity as HomePage).mDrawerLayout
+        val drawer = (activity as HomeActivity).mDrawerLayout
         more_btn_fav.setOnClickListener {
             drawer.openDrawer(GravityCompat.START)
         }
         var layoutManager = LinearLayoutManager(context)
-        view.tv_thereIsNoNews.isVisible = adapter.itemCount==0
+        view.tv_thereIsNoNews.isVisible = adapter.itemCount == 0
         val observer = object : RecyclerView.AdapterDataObserver(){
             override fun onChanged() {
                 super.onChanged()

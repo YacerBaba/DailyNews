@@ -35,6 +35,11 @@ android {
 }
 
 dependencies {
+    //lifecycleScope
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
+    //viewModelScope
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
     //google
     implementation 'com.google.android.gms:play-services-auth:20.4.0'
     //facebook
